@@ -23,9 +23,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'cu1ucufa32&$r3#v-@&&08fy27h1s$t0@644n8r*_(m&@y1xv='
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = ['127.0.0.1', 'localhost']
+ALLOWED_HOSTS = ['tom-fithub.com', '127.0.0.1', 'localhost']
 
 
 # Application definition
