@@ -1,0 +1,69 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+
+
+<div class='row text-center'>
+  <div class='col'>
+      <h1>Welcome to Fithub</h1>
+  </div>
+</div>
+
+{% include 'components/search.html' %}
+
+<div class='row' id='exercises'>
+  Loading...
+</div>
+
+
+
+<script>
+
+
+function formatExElement(ex){  
+  return "<div class='mb-4 border' id='" + ex.id + "'><p>" + '<a href="/exercises/detail/' + ex.id + '"><h1>' + ex.name + '</h1></a> ' + ex.description + ' <p>tagy: ' + ex.tags + '</p>' + '</p><div class btn-group></div></div>'
+}
+
+const exElement = document.getElementById('exercises')
+  exElement.innerHTML = ''
+  
+function loadExercises(exElement){
+  const xhr = new XMLHttpRequest()
+  const method = 'GET'
+  const url = '/exercises'
+  const responseType = 'json'
+  xhr.responseType = responseType
+  xhr.open(method, url)
+  xhr.onload = function() {
+    const serverResponse = xhr.response
+    const listedItems = serverResponse.response
+    var finalExStr = ''
+    var i;
+    for (i=0;i<listedItems.length; i++) {
+      var exObj = listedItems[i]
+      var currentItem = formatExElement(exObj)
+      finalExStr += currentItem
+    exElement.innerHTML = finalExStr
+    }
+  }
+
+  xhr.send()
+}
+
+loadExercises(exElement)
+
+
+</script>
+{% endblock content %}
+
+
+<html>
+  <body>
+    {{ x }}
+  </body>
+
+  <script>
+    const value = x
+  </script>
+</html>
