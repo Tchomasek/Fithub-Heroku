@@ -2,16 +2,29 @@
 
 {% block content %}
 
-<h1>{{name}}</h1>
 
-<iframe 
-    width="560" 
-    height="315" 
-    src={{link}}
-    frameborder="0" 
-    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-    allowfullscreen>
-</iframe>
-<p>{{description}}</p>
+<div class="row">
+    <div class="col-md-8 offset-md-2 pt-3">
+        <div class="row">
+            <div class="col-md-3 mx-right">
+
+                <h1>{{name}}</h1>
+                <p>{{description}}</p>
+            </div>
+            <div class="col-md-3 mx-auto">
+                <iframe 
+                    width="560" 
+                    height="315" 
+                    src={{link}}
+                    frameborder="0" 
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                    allowfullscreen>
+                </iframe>
+            </div>
+            
+        </div>
+    </div>
+</div>
+
 {% endblock content %}
 
