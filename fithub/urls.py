@@ -19,12 +19,17 @@ from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 
 from exercises.views import (home_view, ex_detail_view, ex_list_view, search_view)
 
+from post.views import post_create_view, post_list_view
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', home_view),
     path('exercises/detail/<int:ex_id>', ex_detail_view),
     path('exercises', ex_list_view),
     path('search/<str:section>', search_view),
+    path('create-post', post_create_view),
+    path('posts', post_list_view),
+
 ]
 
 urlpatterns += staticfiles_urlpatterns()
