@@ -24,7 +24,7 @@ urlpatterns = [
     path('', home_view),
     path('exercises/detail/<int:ex_id>', ex_detail_view),
     path('exercises', ex_list_view),
-    path('search', search_view),
+    path('search/<str:section>', search_view),
 ]
 
 urlpatterns += staticfiles_urlpatterns()

@@ -1,20 +1,26 @@
 {% extends 'base.html' %}
 
 {% block content %}
+{% load static %}
 
 
 
-<div class='row text-center'>
-  <div class='col'>
-      <h1>Welcome to Fithub search {{ search }}</h1>
-  </div>
-</div>
 
-{% include 'components/search.html' %}
+<main>
+  <div class="album py-5 bg-light">
+    <!-- {% include 'components/search.html' %} -->
+    <div class='row text-center'>
+      <div class='col'>
+          <!-- <h1>Welcome to Fithub</h1> -->
+      </div>
+    </div>
+    <div class="container">      
+      <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3" id='exercises'>        
 
-<div class='row' id='exercises'>
-  Searching...
-</div>
+            Loading...
+    </div>
+  </div> 
+</main>
 
 
 
@@ -22,8 +28,24 @@
   const exElement = document.getElementById('exercises')
   exElement.innerHTML = ''
   
-  function formatExElement(ex){  
-  return "<div class='mb-4 border' id='" + ex.id + "'><p>" + '<a href="/exercises/detail/' + ex.id + '"><h1>' + ex.name + '</h1></a> ' + ex.description + ' <p>tagy: ' + ex.tags + '</p>' + '</p><div class btn-group></div></div>'
+  function formatExElement(ex){
+  var ExElement = 
+    `<div class="col">
+      <div class="card shadow-sm">
+        <a href="../exercises/detail/`+ ex.id+`" style="text-decoration: none;">
+        <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false">
+          <image href="{% static 'images/` + ex.name + `.jpg' %}" width="100%" height="100%"/>
+        </svg>
+        </a>
+        <div class="card-body">
+          <p>`+ ex.description + `</p>
+          <p class="card-text"><h1>`+ ex.name + `</h1></p>
+          <div class="d-flex justify-content-between align-items-center">
+          </div>
+        </div>
+      </div>
+    </div>`
+    return ExElement
 }
 
   const xhr = new XMLHttpRequest()

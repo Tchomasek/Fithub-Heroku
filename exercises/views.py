@@ -7,9 +7,8 @@ from .models import Exercise, Tag
 def home_view(request, *args, **kwargs):    
     return render(request, 'pages/home.html', context = {}, status = 200)
 
-def search_view(request, *args, **kwargs):
-    search = request.GET['search']
-    return render(request, 'pages/search.html', context = {'search': search}, status = 200)
+def search_view(request, section, *args, **kwargs):
+    return render(request, 'pages/search.html', context = {'search': section}, status = 200)
 
 
 def ex_list_view(request, *args, **kwargs):
