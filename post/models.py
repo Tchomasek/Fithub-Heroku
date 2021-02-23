@@ -2,3 +2,5 @@ from django.db import models
 
 class Post(models.Model):
     content = models.TextField(blank=True, null=True)
+    chat =  models.TextField(blank=False, null=False)
+    

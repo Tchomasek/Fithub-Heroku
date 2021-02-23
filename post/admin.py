@@ -3,7 +3,7 @@ from .models import Post
 
 class PostAdmin(admin.ModelAdmin):
     list_display = ['__str__', 'user']
-    search_fields = ['content']
+    search_fields = ['content', 'chat']
     class Meta:
         model = Post
 

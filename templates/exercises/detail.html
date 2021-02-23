@@ -26,5 +26,54 @@
     </div>
 </div>
 
+<div class='row'>
+    <div class='col-md-4 mx-auto col-10'>
+      <form class='form' method='POST' action='/create-post'>
+        {% csrf_token %}
+        <input type='hidden' value='/exercises/detail/{{id}}' name='next'/>
+        <textarea class='form-control' name='content' placeholder='Your post...'></textarea>
+        <input type='hidden' class='form-control' name='chat' value={{name}}></textarea>
+        <button type='submit' class='btn btn-primary'>Post</button>
+      </form>
+      <div class='' id='posts'>
+        loading posts...
+      </div>
+    </div>    
+  </div>
+
+<script>
+  const postsElement = document.getElementById('posts')
+  postsElement.innerHTML = ''
+  
+  function loadPosts(postsElement){
+    const xhr = new XMLHttpRequest()
+    const method = 'GET'
+    const url = '/posts'
+    const responseType = 'json'
+    xhr.responseType = responseType
+    xhr.open(method, url)
+    xhr.onload = function() {
+      const serverResponse = xhr.response
+      const listedItems = serverResponse.response
+      var finalPostStr = ''
+      var i;
+      var chat = `{{name}}`
+      for (i=0;i<listedItems.length; i++) {
+        var postObj = listedItems[i]
+        console.log(postObj)
+        if (postObj.chat === chat){
+          finalPostStr += `<p>` + postObj.content + `</p>`
+        }
+      postsElement.innerHTML = finalPostStr
+      }
+    }
+  
+    xhr.send()
+  }
+  
+  loadPosts(postsElement)
+  
+  </script>
+
 {% endblock content %}
 

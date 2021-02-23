@@ -6,7 +6,7 @@ from .models import Post
 
 def post_list_view(request, *args, **kwargs):
     qs = Post.objects.all()
-    post_list = [{"id": x.id, "content": x.content} for x in qs]
+    post_list = [{"id": x.id, "content": x.content, 'chat': x.chat} for x in qs]
     data = {
         "response": post_list
     }
@@ -17,7 +17,6 @@ def post_create_view(request, *args, **kwargs):
     next_url = request.POST.get('next') or None
     if form.is_valid():
         obj = form.save(commit=False)
-        # do other form related logic
         obj.save()
         if next_url != None:
             return redirect(next_url)
