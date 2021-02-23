@@ -62,7 +62,7 @@
         var postObj = listedItems[i]
         console.log(postObj)
         if (postObj.chat === chat){
-          finalPostStr += `<p>` + postObj.content + `</p>`
+          finalPostStr += `<p>` + postObj.user + ` - ` + postObj.content + `</p>`
         }
       postsElement.innerHTML = finalPostStr
       }

@@ -21,6 +21,8 @@ from exercises.views import (home_view, ex_detail_view, ex_list_view, search_vie
 
 from post.views import post_create_view, post_list_view
 
+from accounts.views import login_view, logout_view, register_view
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', home_view),
@@ -29,6 +31,10 @@ urlpatterns = [
     path('search/<str:section>', search_view),
     path('create-post', post_create_view),
     path('posts', post_list_view),
+    path('login/', login_view),
+    path('logout/', logout_view),
+    path('register/', register_view),
+
 
 ]
 

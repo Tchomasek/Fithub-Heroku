@@ -115,9 +115,8 @@ function loadPosts(postsElement){
     var i;
     for (i=0;i<listedItems.length; i++) {
       var postObj = listedItems[i]
-      console.log(postObj)
       if (postObj.chat === 'home'){
-        finalPostStr += `<p>` + postObj.content + `</p>`
+        finalPostStr += `<p>` + postObj.user + ` - ` + postObj.content + `</p>`
       }
     postsElement.innerHTML = finalPostStr
     }
